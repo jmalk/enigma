@@ -68,7 +68,7 @@ export const rotor = (mapping: RotorMapping) => {
   };
 
   return {
-    transform: (letter: Letter): Letter => {
+    transform: (letter: Letter) => {
       return mapping[inputAdjustedByPosition(letter, position)];
     },
     setPosition: (newPosition: Letter) => (position = newPosition),
