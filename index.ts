@@ -1,2 +1,32 @@
-export const rotor = (mapping: Record<string, string>) => (char: string) =>
-  mapping[char];
+export type Char =
+  | "A"
+  | "B"
+  | "C"
+  | "D"
+  | "E"
+  | "F"
+  | "G"
+  | "H"
+  | "I"
+  | "J"
+  | "K"
+  | "L"
+  | "M"
+  | "N"
+  | "O"
+  | "P"
+  | "Q"
+  | "R"
+  | "S"
+  | "T"
+  | "U"
+  | "V"
+  | "W"
+  | "X"
+  | "Y"
+  | "Z";
+
+export const rotor =
+  (mapping: Record<Char, Char>) =>
+  (char: Char): Char =>
+    mapping[char];

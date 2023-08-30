@@ -1,11 +1,40 @@
-import { rotor } from ".";
+import { Char, rotor } from ".";
 
 // Enigma I, Rotor I
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ
 // EKMFLGDQVZNTOWYHXUSPAIBRCJ
 // - https://en.wikipedia.org/wiki/Enigma_rotor_details#Rotor_wiring_tables
 
-const rotorIMapping = {
+const characters: Char[] = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+
+const rotorIMapping: Record<Char, Char> = {
   A: "E",
   B: "K",
   C: "M",
@@ -37,7 +66,14 @@ const rotorIMapping = {
 test(`A rotor transforms from one letter to another according to its config`, () => {
   const rotorI = rotor(rotorIMapping);
 
-  for (const [key, value] of Object.entries(rotorIMapping)) {
-    expect(rotorI(key)).toBe(value);
-  }
+  characters.forEach((character) => {
+    expect(rotorI(character)).toBe(rotorIMapping[character]);
+  });
+});
+
+test(`You can't get a rotor to transform two characters at once`, () => {
+  const rotorI = rotor(rotorIMapping);
+
+  // @ts-expect-error
+  rotorI("AB");
 });
