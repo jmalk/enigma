@@ -1,4 +1,4 @@
-import { Letter, rotor, letters, RotorMapping } from ".";
+import { Letter, rotor, alphabet, RotorMapping } from ".";
 
 // Enigma I, Rotor I
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ
@@ -37,7 +37,7 @@ const rotorIMapping: RotorMapping = {
 test(`A rotor transforms from one letter to another according to its config`, () => {
   const rotorI = rotor(rotorIMapping);
 
-  letters.forEach((letter) => {
+  alphabet.forEach((letter) => {
     expect(rotorI.transform(letter)).toBe(rotorIMapping[letter]);
   });
 });

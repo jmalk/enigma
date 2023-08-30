@@ -26,7 +26,7 @@ export type Letter =
   | "Y"
   | "Z";
 
-export const letters: readonly Letter[] = [
+export const alphabet: readonly Letter[] = [
   "A",
   "B",
   "C",
@@ -61,10 +61,10 @@ export const rotor = (mapping: RotorMapping) => {
   let position: Letter = "A";
 
   const inputAdjustedByPosition = (letter: Letter, position: Letter) => {
-    const indexOfLetter = letters.indexOf(letter);
-    const indexOfPosition = letters.indexOf(position);
+    const indexOfLetter = alphabet.indexOf(letter);
+    const indexOfPosition = alphabet.indexOf(position);
     const targetIndex = (indexOfLetter + indexOfPosition) % 26;
-    return letters[targetIndex];
+    return alphabet[targetIndex];
   };
 
   return {
