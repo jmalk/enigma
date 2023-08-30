@@ -1,4 +1,4 @@
-import { Letter, Rotor, alphabet, RotorMapping } from ".";
+import { Rotor, alphabet, RotorMapping } from ".";
 
 // Enigma I, Rotor I
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ
