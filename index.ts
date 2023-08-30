@@ -1,4 +1,4 @@
-export type Char =
+export type Letter =
   | "A"
   | "B"
   | "C"
@@ -26,7 +26,7 @@ export type Char =
   | "Y"
   | "Z";
 
-export const characters: Char[] = [
+export const letters: Letter[] = [
   "A",
   "B",
   "C",
@@ -55,20 +55,20 @@ export const characters: Char[] = [
   "Z",
 ];
 
-export const rotor = (mapping: Record<Char, Char>) => {
-  let position: Char = "A";
+export const rotor = (mapping: Record<Letter, Letter>) => {
+  let position: Letter = "A";
 
-  const inputAdjustedByPosition = (character: Char, position: Char) => {
-    const indexOfCharacter = characters.indexOf(character);
-    const indexOfPosition = characters.indexOf(position);
-    const targetIndex = (indexOfCharacter + indexOfPosition) % 26;
-    return characters[targetIndex];
+  const inputAdjustedByPosition = (letter: Letter, position: Letter) => {
+    const indexOfLetter = letters.indexOf(letter);
+    const indexOfPosition = letters.indexOf(position);
+    const targetIndex = (indexOfLetter + indexOfPosition) % 26;
+    return letters[targetIndex];
   };
 
   return {
-    transform: (char: Char): Char => {
-      return mapping[inputAdjustedByPosition(char, position)];
+    transform: (letter: Letter): Letter => {
+      return mapping[inputAdjustedByPosition(letter, position)];
     },
-    setPosition: (newPosition: Char) => (position = newPosition),
+    setPosition: (newPosition: Letter) => (position = newPosition),
   };
 };
