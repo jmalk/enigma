@@ -1,11 +1,11 @@
-import { Letter, rotor, letters } from ".";
+import { Letter, rotor, letters, RotorMapping } from ".";
 
 // Enigma I, Rotor I
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ
 // EKMFLGDQVZNTOWYHXUSPAIBRCJ
 // - https://en.wikipedia.org/wiki/Enigma_rotor_details#Rotor_wiring_tables
 
-const rotorIMapping: Record<Letter, Letter> = {
+const rotorIMapping: RotorMapping = {
   A: "E",
   B: "K",
   C: "M",

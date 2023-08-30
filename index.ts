@@ -55,7 +55,9 @@ export const letters: Letter[] = [
   "Z",
 ];
 
-export const rotor = (mapping: Record<Letter, Letter>) => {
+export type RotorMapping = Record<Letter, Letter>;
+
+export const rotor = (mapping: RotorMapping) => {
   let position: Letter = "A";
 
   const inputAdjustedByPosition = (letter: Letter, position: Letter) => {
