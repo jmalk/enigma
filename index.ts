@@ -26,7 +26,7 @@ export type Letter =
   | "Y"
   | "Z";
 
-export const letters: Letter[] = [
+export const letters: readonly Letter[] = [
   "A",
   "B",
   "C",
