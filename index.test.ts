@@ -1,11 +1,11 @@
-import { rotorI } from ".";
+import { rotor } from ".";
 
 // Enigma I, Rotor I
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ
 // EKMFLGDQVZNTOWYHXUSPAIBRCJ
 // - https://en.wikipedia.org/wiki/Enigma_rotor_details#Rotor_wiring_tables
 
-const mapping = {
+const rotorIMapping = {
   A: "E",
   B: "K",
   C: "M",
@@ -34,8 +34,10 @@ const mapping = {
   Z: "J",
 };
 
-for (const [key, value] of Object.entries(mapping)) {
-  test(`In position 1, Rotor I transforms ${key} to ${value}`, () => {
+test(`A rotor transforms from one letter to another according to its config`, () => {
+  const rotorI = rotor(rotorIMapping);
+
+  for (const [key, value] of Object.entries(rotorIMapping)) {
     expect(rotorI(key)).toBe(value);
-  });
-}
+  }
+});
