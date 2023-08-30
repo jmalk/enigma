@@ -1,4 +1,4 @@
-import { Letter, rotor, alphabet, RotorMapping } from ".";
+import { Letter, Rotor, alphabet, RotorMapping } from ".";
 
 // Enigma I, Rotor I
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ
@@ -35,7 +35,7 @@ const rotorIMapping: RotorMapping = {
 };
 
 test(`A rotor transforms from one letter to another according to its config`, () => {
-  const rotorI = rotor(rotorIMapping);
+  const rotorI = new Rotor(rotorIMapping);
 
   alphabet.forEach((letter) => {
     expect(rotorI.transform(letter)).toBe(rotorIMapping[letter]);
@@ -43,14 +43,14 @@ test(`A rotor transforms from one letter to another according to its config`, ()
 });
 
 test(`You can't get a rotor to transform two letters at once`, () => {
-  const rotorI = rotor(rotorIMapping);
+  const rotorI = new Rotor(rotorIMapping);
 
   // @ts-expect-error
   rotorI.transform("AB");
 });
 
 test(`Rotor I in position "B" maps A to K`, () => {
-  const rotorI = rotor(rotorIMapping);
+  const rotorI = new Rotor(rotorIMapping);
 
   rotorI.setPosition("B");
 
@@ -58,7 +58,7 @@ test(`Rotor I in position "B" maps A to K`, () => {
 });
 
 test(`Rotor I in position "B" maps B to M`, () => {
-  const rotorI = rotor(rotorIMapping);
+  const rotorI = new Rotor(rotorIMapping);
 
   rotorI.setPosition("B");
 
@@ -66,7 +66,7 @@ test(`Rotor I in position "B" maps B to M`, () => {
 });
 
 test(`Rotor I in position "B" maps C to F`, () => {
-  const rotorI = rotor(rotorIMapping);
+  const rotorI = new Rotor(rotorIMapping);
 
   rotorI.setPosition("B");
 
@@ -74,7 +74,7 @@ test(`Rotor I in position "B" maps C to F`, () => {
 });
 
 test(`Rotor I in position "B" maps Z to E`, () => {
-  const rotorI = rotor(rotorIMapping);
+  const rotorI = new Rotor(rotorIMapping);
 
   rotorI.setPosition("B");
 
@@ -82,9 +82,13 @@ test(`Rotor I in position "B" maps Z to E`, () => {
 });
 
 test(`Rotor I in position "Z" maps A to J`, () => {
-  const rotorI = rotor(rotorIMapping);
+  const rotorI = new Rotor(rotorIMapping);
 
   rotorI.setPosition("Z");
 
   expect(rotorI.transform("A")).toBe("J");
+});
+
+test(`Rotor I in position "Z" maps A to J still works if you chain the calls`, () => {
+  expect(new Rotor(rotorIMapping).setPosition("Z").transform("A")).toBe("J");
 });

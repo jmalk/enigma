@@ -57,20 +57,28 @@ export const alphabet: readonly Letter[] = [
 
 export type RotorMapping = Record<Letter, Letter>;
 
-export const rotor = (mapping: RotorMapping) => {
-  let position: Letter = "A";
+export class Rotor {
+  mapping: RotorMapping;
+  position: Letter;
 
-  const inputAdjustedByPosition = (letter: Letter, position: Letter) => {
+  constructor(mapping: RotorMapping) {
+    this.mapping = mapping;
+    this.position = "A";
+  }
+
+  private inputAdjustedByPosition = (letter: Letter) => {
     const indexOfLetter = alphabet.indexOf(letter);
-    const indexOfPosition = alphabet.indexOf(position);
+    const indexOfPosition = alphabet.indexOf(this.position);
     const targetIndex = (indexOfLetter + indexOfPosition) % 26;
     return alphabet[targetIndex];
   };
 
-  return {
-    transform: (letter: Letter) => {
-      return mapping[inputAdjustedByPosition(letter, position)];
-    },
-    setPosition: (newPosition: Letter) => (position = newPosition),
-  };
-};
+  transform(letter: Letter) {
+    return this.mapping[this.inputAdjustedByPosition(letter)];
+  }
+
+  setPosition(newPosition: Letter) {
+    this.position = newPosition;
+    return this;
+  }
+}
