@@ -50,41 +50,31 @@ test(`You can't get a rotor to transform two letters at once`, () => {
 });
 
 test(`Rotor I in position "B" maps A to K`, () => {
-  const rotorI = new Rotor(rotorIMapping);
-
-  rotorI.setPosition("B");
+  const rotorI = new Rotor(rotorIMapping, "B");
 
   expect(rotorI.transform("A")).toBe("K");
 });
 
 test(`Rotor I in position "B" maps B to M`, () => {
-  const rotorI = new Rotor(rotorIMapping);
-
-  rotorI.setPosition("B");
+  const rotorI = new Rotor(rotorIMapping, "B");
 
   expect(rotorI.transform("B")).toBe("M");
 });
 
 test(`Rotor I in position "B" maps C to F`, () => {
-  const rotorI = new Rotor(rotorIMapping);
-
-  rotorI.setPosition("B");
+  const rotorI = new Rotor(rotorIMapping, "B");
 
   expect(rotorI.transform("C")).toBe("F");
 });
 
 test(`Rotor I in position "B" maps Z to E`, () => {
-  const rotorI = new Rotor(rotorIMapping);
-
-  rotorI.setPosition("B");
+  const rotorI = new Rotor(rotorIMapping, "B");
 
   expect(rotorI.transform("Z")).toBe("E");
 });
 
 test(`Rotor I in position "Z" maps A to J`, () => {
-  const rotorI = new Rotor(rotorIMapping);
-
-  rotorI.setPosition("Z");
+  const rotorI = new Rotor(rotorIMapping, "Z");
 
   expect(rotorI.transform("A")).toBe("J");
 });

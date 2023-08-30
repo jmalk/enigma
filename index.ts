@@ -61,9 +61,9 @@ export class Rotor {
   mapping: RotorMapping;
   position: Letter;
 
-  constructor(mapping: RotorMapping) {
+  constructor(mapping: RotorMapping, initialPosition?: Letter) {
     this.mapping = mapping;
-    this.position = "A";
+    this.position = initialPosition ?? "A";
   }
 
   private inputAdjustedByPosition = (letter: Letter) => {
