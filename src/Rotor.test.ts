@@ -36,10 +36,10 @@ const rotorIWiring: RotorWiring = {
 };
 
 describe("Transform:", () => {
-  test(`A rotor transforms from one letter to another according to its config`, () => {
-    const rotorI = new Rotor(rotorIWiring);
+  alphabet.forEach((letter) => {
+    test(`A rotor transforms from ${letter} to ${rotorIWiring[letter]} according to its wiring`, () => {
+      const rotorI = new Rotor(rotorIWiring);
 
-    alphabet.forEach((letter) => {
       expect(rotorI.transform(letter)).toBe(rotorIWiring[letter]);
     });
   });
