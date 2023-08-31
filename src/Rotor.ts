@@ -1,14 +1,14 @@
 import { Letter } from "./Letter";
 import { alphabet } from "./alphabet";
 
-export type RotorMapping = Record<Letter, Letter>;
+export type RotorWiring = Record<Letter, Letter>;
 
 export class Rotor {
-  mapping: RotorMapping;
+  wiring: RotorWiring;
   position: Letter;
 
-  constructor(mapping: RotorMapping, initialPosition?: Letter) {
-    this.mapping = mapping;
+  constructor(wiring: RotorWiring, initialPosition?: Letter) {
+    this.wiring = wiring;
     this.position = initialPosition ?? "A";
   }
 
@@ -20,7 +20,7 @@ export class Rotor {
   };
 
   transform(letter: Letter) {
-    return this.mapping[this.inputAdjustedByPosition(letter)];
+    return this.wiring[this.inputAdjustedByPosition(letter)];
   }
 
   setPosition(newPosition: Letter) {
