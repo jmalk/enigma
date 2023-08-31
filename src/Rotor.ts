@@ -19,8 +19,16 @@ export class Rotor {
     return alphabet[targetIndex];
   };
 
+  private getKeyOfValue(object, value) {
+    return Object.keys(object).find((key) => object[key] === value);
+  }
+
   transform(letter: Letter) {
     return this.wiring[this.inputAdjustedByPosition(letter)];
+  }
+
+  reverseTransform(letter: Letter) {
+    return this.getKeyOfValue(this.wiring, letter);
   }
 
   setPosition(newPosition: Letter) {

@@ -35,51 +35,77 @@ const rotorIWiring: RotorWiring = {
   Z: "J",
 };
 
-test(`A rotor transforms from one letter to another according to its config`, () => {
-  const rotorI = new Rotor(rotorIWiring);
+describe("Transform:", () => {
+  test(`A rotor transforms from one letter to another according to its config`, () => {
+    const rotorI = new Rotor(rotorIWiring);
 
-  alphabet.forEach((letter) => {
-    expect(rotorI.transform(letter)).toBe(rotorIWiring[letter]);
+    alphabet.forEach((letter) => {
+      expect(rotorI.transform(letter)).toBe(rotorIWiring[letter]);
+    });
+  });
+
+  test(`You can't get a rotor to transform two letters at once`, () => {
+    const rotorI = new Rotor(rotorIWiring);
+
+    // @ts-expect-error
+    rotorI.transform("AB");
   });
 });
 
-test(`You can't get a rotor to transform two letters at once`, () => {
-  const rotorI = new Rotor(rotorIWiring);
+describe("Position:", () => {
+  test(`Rotor I in position "B" maps A to K`, () => {
+    const rotorI = new Rotor(rotorIWiring, "B");
 
-  // @ts-expect-error
-  rotorI.transform("AB");
+    expect(rotorI.transform("A")).toBe("K");
+  });
+
+  test(`Rotor I in position "B" maps B to M`, () => {
+    const rotorI = new Rotor(rotorIWiring, "B");
+
+    expect(rotorI.transform("B")).toBe("M");
+  });
+
+  test(`Rotor I in position "B" maps C to F`, () => {
+    const rotorI = new Rotor(rotorIWiring, "B");
+
+    expect(rotorI.transform("C")).toBe("F");
+  });
+
+  test(`Rotor I in position "B" maps Z to E`, () => {
+    const rotorI = new Rotor(rotorIWiring, "B");
+
+    expect(rotorI.transform("Z")).toBe("E");
+  });
+
+  test(`Rotor I in position "Z" maps A to J`, () => {
+    const rotorI = new Rotor(rotorIWiring, "Z");
+
+    expect(rotorI.transform("A")).toBe("J");
+  });
+
+  test(`Rotor I in position "Z" maps A to J still works if you chain the calls`, () => {
+    expect(new Rotor(rotorIWiring).setPosition("Z").transform("A")).toBe("J");
+  });
 });
 
-test(`Rotor I in position "B" maps A to K`, () => {
-  const rotorI = new Rotor(rotorIWiring, "B");
+describe("Reverse transformation:", () => {
+  test(`Rotor I in position "A" maps E to A when used in reverse`, () => {
+    const rotorI = new Rotor(rotorIWiring, "A");
 
-  expect(rotorI.transform("A")).toBe("K");
-});
+    expect(rotorI.reverseTransform("E")).toBe("A");
+  });
 
-test(`Rotor I in position "B" maps B to M`, () => {
-  const rotorI = new Rotor(rotorIWiring, "B");
+  test(`Rotor I in position "A" maps K to B when used in reverse`, () => {
+    const rotorI = new Rotor(rotorIWiring, "A");
 
-  expect(rotorI.transform("B")).toBe("M");
-});
+    expect(rotorI.reverseTransform("K")).toBe("B");
+  });
 
-test(`Rotor I in position "B" maps C to F`, () => {
-  const rotorI = new Rotor(rotorIWiring, "B");
+  alphabet.forEach((letter) => {
+    test(`A rotor reverse-transforms from ${rotorIWiring[letter]} to ${letter} according to its config`, () => {
+      const rotorI = new Rotor(rotorIWiring);
 
-  expect(rotorI.transform("C")).toBe("F");
-});
-
-test(`Rotor I in position "B" maps Z to E`, () => {
-  const rotorI = new Rotor(rotorIWiring, "B");
-
-  expect(rotorI.transform("Z")).toBe("E");
-});
-
-test(`Rotor I in position "Z" maps A to J`, () => {
-  const rotorI = new Rotor(rotorIWiring, "Z");
-
-  expect(rotorI.transform("A")).toBe("J");
-});
-
-test(`Rotor I in position "Z" maps A to J still works if you chain the calls`, () => {
-  expect(new Rotor(rotorIWiring).setPosition("Z").transform("A")).toBe("J");
+      expect(rotorI.reverseTransform(rotorIWiring[letter])).toBe(letter);
+    });
+  });
 });
