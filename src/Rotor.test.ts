@@ -109,3 +109,35 @@ describe("Reverse transformation:", () => {
     });
   });
 });
+
+describe("Position and reverse transformation:", () => {
+  test(`Rotor I in position "B" reverse-transforms K to A`, () => {
+    const rotorI = new Rotor(rotorIWiring, "B");
+
+    expect(rotorI.reverseTransform("K")).toBe("A");
+  });
+
+  test(`Rotor I in position "B" reverse-transforms M to B`, () => {
+    const rotorI = new Rotor(rotorIWiring, "B");
+
+    expect(rotorI.reverseTransform("M")).toBe("B");
+  });
+
+  test(`Rotor I in position "B" reverse-transforms F to C`, () => {
+    const rotorI = new Rotor(rotorIWiring, "B");
+
+    expect(rotorI.reverseTransform("F")).toBe("C");
+  });
+
+  test(`Rotor I in position "B" reverse-transforms E to Z`, () => {
+    const rotorI = new Rotor(rotorIWiring, "B");
+
+    expect(rotorI.reverseTransform("E")).toBe("Z");
+  });
+
+  test(`Rotor I in position "Z" reverse-transforms J to A`, () => {
+    const rotorI = new Rotor(rotorIWiring, "Z");
+
+    expect(rotorI.reverseTransform("J")).toBe("A");
+  });
+});
