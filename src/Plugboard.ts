@@ -1,20 +1,15 @@
 import { Letter } from "./Letter";
 
 type Connection = [Letter, Letter];
-type PlugboardConfig = Connection[];
+type Connections = Connection[];
 
 export const plugboard =
-  (config: PlugboardConfig) =>
+  (connections: Connections) =>
   (input: Letter): Letter => {
-    let result = null;
-    config.forEach((connection) => {
-      if (input === connection?.[0]) {
-        result = connection[1];
-      }
-      if (input === connection?.[1]) {
-        result = connection[0];
-      }
-    });
+    const transformedLetter = connections
+      .find((connection) => connection.includes(input))
+      ?.filter((letter) => letter !== input)[0]; // Return the OTHER letter from the connection that includes the input
 
-    return result ?? input;
+    // Return the result, or if no connections included the input, return the input unchanged.
+    return transformedLetter ?? input;
   };
