@@ -4,15 +4,18 @@ type Connection = [Letter, Letter];
 type Connections = Connection[];
 
 function throwIfAnyConnectedToSelf(connections: Connection[]) {
-  connections.forEach((connection) => {
+  connections.forEach((connection, index) => {
     if (connection[0] === connection[1]) {
-      throw new Error("Plugboard should not have a letter connected to itself");
+      throw new Error(
+        `Plugboard should not have a letter connected to itself. See connection at index ${index}`,
+      );
     }
   });
 }
 
 export const plugboard = (connections: Connections) => {
   throwIfAnyConnectedToSelf(connections);
+
   return (input: Letter): Letter => {
     const transformedLetter = connections
       .find((connection) => connection.includes(input))
