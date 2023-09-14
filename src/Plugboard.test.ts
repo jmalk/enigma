@@ -113,6 +113,11 @@ test("A plugboard errors if you try to connect a letter to itself", () => {
   ).toThrow();
 });
 
-test.todo(
-  "A plugboard errors if you try to connect a letter to more than one other letter",
-);
+test("A plugboard errors if you try to connect a letter to more than one other letter", () => {
+  expect(() =>
+    plugboard([
+      ["M", "N"],
+      ["N", "O"],
+    ]),
+  ).toThrow();
+});
