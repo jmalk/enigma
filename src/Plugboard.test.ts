@@ -102,3 +102,17 @@ describe("A plugboard with F connected to H and G connected to I", () => {
     expect(pb("G")).toBe("I");
   });
 });
+
+test("A plugboard errors if you try to connect a letter to itself", () => {
+  expect(() => plugboard([["A", "A"]])).toThrow();
+  expect(() =>
+    plugboard([
+      ["A", "B"],
+      ["C", "C"],
+    ]),
+  ).toThrow();
+});
+
+test.todo(
+  "A plugboard errors if you try to connect a letter to more than one other letter",
+);
