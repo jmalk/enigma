@@ -1,4 +1,4 @@
-import { plugboard } from "./Plugboard";
+import { plugboard } from "./plugboard";
 import { Letter } from "./Letter";
 import { alphabet } from "./alphabet";
 

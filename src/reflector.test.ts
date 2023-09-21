@@ -2,7 +2,7 @@
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ
 // YRUHQSLDPXNGOKMIEBFZCWVJAT
 
-import { reflector } from "./Reflector";
+import { reflector } from "./reflector";
 import { RotorWiring } from "./Rotor";
 import { alphabet } from "./alphabet";
 
