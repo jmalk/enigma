@@ -7,7 +7,7 @@ export const enigma =
   (
     reflectorWiring: RotorWiring,
     plugboardConfig: Connections,
-    rightRotorWiring?: RotorWiring,
+    rightRotorWiring: RotorWiring,
   ) =>
   (letter: Letter) => {
     if (!rightRotorWiring) {
