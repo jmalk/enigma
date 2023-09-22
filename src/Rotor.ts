@@ -32,8 +32,9 @@ export class Rotor {
   }
 
   transform(letter: Letter) {
-    // TODO: Need to take position back off after wiring! BUG!
-    return this.wiring[this.inputAdjustedByPosition(letter)];
+    return this.removeEffectOfPosition(
+      this.wiring[this.inputAdjustedByPosition(letter)],
+    );
   }
 
   reverseTransform(letter: Letter) {
