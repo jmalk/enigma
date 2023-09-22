@@ -4,7 +4,7 @@ import { Connections } from "./plugboard";
 
 test("Transforms a letter via the (empty) plugboard, rotor I, reflector, back through rotor I", () => {
   const plugboardConfig: Connections = [];
-  const e = enigma(ukwBWiring, plugboardConfig, rotorIWiring);
+  const e = enigma(plugboardConfig, rotorIWiring, ukwBWiring);
 
   // rotor I
   // A => E
@@ -22,7 +22,7 @@ test("Transforms a letter via the plugboard, rotor I, reflector, back through ro
     ["K", "T"],
   ];
 
-  const e = enigma(ukwBWiring, plugboardConfig, rotorIWiring);
+  const e = enigma(plugboardConfig, rotorIWiring, ukwBWiring);
 
   // plugboard
   // A => B

@@ -5,9 +5,9 @@ import { Connections, plugboard } from "./plugboard";
 
 export const enigma =
   (
-    reflectorWiring: RotorWiring,
     plugboardConfig: Connections,
     rightRotorWiring: RotorWiring,
+    reflectorWiring: RotorWiring,
   ) =>
   (letter: Letter) => {
     const ukw = reflector(reflectorWiring);
