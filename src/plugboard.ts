@@ -1,7 +1,7 @@
 import { Letter } from "./Letter";
 
 type Connection = [Letter, Letter];
-type Connections = Connection[];
+export type Connections = Connection[];
 
 function throwIfAnyConnectedToSelf(connections: Connection[]) {
   connections.forEach((connection, index) => {

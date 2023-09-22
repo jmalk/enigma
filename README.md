@@ -1,12 +1,12 @@
 # Enigma
 
-An Enigma machine emulator written in TypeScript.
+An Enigma I machine emulator written in TypeScript.
 
-## TODO
+## Resources
 
-I'll start by focussing on the Enigma I (1) to help answer these questions.
-
-See https://www.cryptomuseum.com/crypto/enigma/i/index.htm
+- https://www.cryptomuseum.com/crypto/enigma/i/index.htm
+- https://observablehq.com/@tmcw/enigma-machine
+- https://github.com/gchq/CyberChef/blob/master/src/core/lib/Enigma.mjs
 
 ### Questions
 
