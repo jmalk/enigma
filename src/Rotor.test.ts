@@ -83,33 +83,33 @@ describe("Reverse transformation:", () => {
 });
 
 describe("Position and reverse transformation:", () => {
-  test(`Rotor I in position "B" reverse-transforms K to A`, () => {
+  test(`Rotor I in position "B" reverse-transforms K to E`, () => {
     const rotorI = new Rotor(rotorIWiring, "B");
 
-    expect(rotorI.reverseTransform("K")).toBe("A");
+    expect(rotorI.reverseTransform("K")).toBe("E");
   });
 
-  test(`Rotor I in position "B" reverse-transforms M to B`, () => {
+  test(`Rotor I in position "B" reverse-transforms M to K`, () => {
     const rotorI = new Rotor(rotorIWiring, "B");
 
-    expect(rotorI.reverseTransform("M")).toBe("B");
+    expect(rotorI.reverseTransform("M")).toBe("K");
   });
 
-  test(`Rotor I in position "B" reverse-transforms F to C`, () => {
+  test(`Rotor I in position "B" reverse-transforms F to F`, () => {
     const rotorI = new Rotor(rotorIWiring, "B");
 
-    expect(rotorI.reverseTransform("F")).toBe("C");
+    expect(rotorI.reverseTransform("F")).toBe("F");
   });
 
   test(`Rotor I in position "B" reverse-transforms E to Z`, () => {
     const rotorI = new Rotor(rotorIWiring, "B");
 
-    expect(rotorI.reverseTransform("E")).toBe("Z");
+    expect(rotorI.reverseTransform("E")).toBe("D");
   });
 
-  test(`Rotor I in position "Z" reverse-transforms J to A`, () => {
+  test(`Rotor I in position "Z" reverse-transforms J to V`, () => {
     const rotorI = new Rotor(rotorIWiring, "Z");
 
-    expect(rotorI.reverseTransform("J")).toBe("A");
+    expect(rotorI.reverseTransform("J")).toBe("V");
   });
 });
