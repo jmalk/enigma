@@ -9,7 +9,6 @@ export const enigma =
     const ukw = reflector(reflectorWiring);
     const pb = plugboard(plugboardConfig);
 
-    const afterPlugboard = pb(letter);
-    const afterReflector = ukw(afterPlugboard);
-    return pb(afterReflector);
+    // PB is symmetrical, so signal can go both in and out through it, I think.
+    return pb(ukw(pb(letter)));
   };
