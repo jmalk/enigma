@@ -10,14 +10,6 @@ export const enigma =
     rightRotorWiring: RotorWiring,
   ) =>
   (letter: Letter) => {
-    if (!rightRotorWiring) {
-      const ukw = reflector(reflectorWiring);
-      const pb = plugboard(plugboardConfig);
-
-      // PB is symmetrical, so signal can go both in and out through it, I think.
-      return pb(ukw(pb(letter)));
-    }
-
     const ukw = reflector(reflectorWiring);
     const pb = plugboard(plugboardConfig);
     const rightRotor = new Rotor(rightRotorWiring);
