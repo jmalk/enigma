@@ -36,34 +36,48 @@ describe("Position:", () => {
     expect(rotorI.transform("A")).toBe("J");
   });
 
-  // TODO: Uncomment and fix up these tests to account for new understanding (see test above).
-  // test(`Rotor I in position "B" maps B to M`, () => {
-  //   const rotorI = new Rotor(rotorIWiring, "B");
-  //
-  //   expect(rotorI.transform("B")).toBe("M");
-  // });
-  //
-  // test(`Rotor I in position "B" maps C to F`, () => {
-  //   const rotorI = new Rotor(rotorIWiring, "B");
-  //
-  //   expect(rotorI.transform("C")).toBe("F");
-  // });
-  //
-  // test(`Rotor I in position "B" maps Z to E`, () => {
-  //   const rotorI = new Rotor(rotorIWiring, "B");
-  //
-  //   expect(rotorI.transform("Z")).toBe("E");
-  // });
-  //
-  // test(`Rotor I in position "Z" maps A to J`, () => {
-  //   const rotorI = new Rotor(rotorIWiring, "Z");
-  //
-  //   expect(rotorI.transform("A")).toBe("J");
-  // });
-  //
-  // test(`Rotor I in position "Z" maps A to J still works if you chain the calls`, () => {
-  //   expect(new Rotor(rotorIWiring).setPosition("Z").transform("A")).toBe("J");
-  // });
+  test(`Rotor I in position "B" maps B to ?`, () => {
+    // Signal comes in at what would be "B" position.
+    // But B is now C because you've rotated one click
+    // C transforms to M via the wiring
+    // But M is in L's position
+    // So L should come out at the end.
+    const rotorI = new Rotor(rotorIWiring, "B");
+
+    expect(rotorI.transform("B")).toBe("L");
+  });
+
+  test(`Rotor I in position "B" maps C to E`, () => {
+    const rotorI = new Rotor(rotorIWiring, "B");
+
+    expect(rotorI.transform("C")).toBe("E");
+  });
+
+  test(`Rotor I in position "B" maps Z to D`, () => {
+    // Signal comes in at what would be "Z" position.
+    // But Z is now A because you've rotated one click
+    // A transforms to E via the wiring
+    // But E is in D's position
+    // So D should come out at the end.
+    const rotorI = new Rotor(rotorIWiring, "B");
+
+    expect(rotorI.transform("Z")).toBe("D");
+  });
+
+  test(`Rotor I in position "Z" maps A to K`, () => {
+    // Signal comes in at what would be "A" position.
+    // But A is now Z because you've rotated twenty-six clicks
+    // Z transforms to J via the wiring
+    // But J is in K's position
+    // So K should come out at the end.
+    const rotorI = new Rotor(rotorIWiring, "Z");
+
+    expect(rotorI.transform("A")).toBe("K");
+  });
+
+  test(`Rotor I in position "Z" maps A to K still works if you chain the calls`, () => {
+    expect(new Rotor(rotorIWiring).setPosition("Z").transform("A")).toBe("K");
+  });
 });
 
 describe("Reverse transformation:", () => {
