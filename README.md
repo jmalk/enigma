@@ -7,6 +7,7 @@ An Enigma I machine emulator written in TypeScript.
 - https://www.cryptomuseum.com/crypto/enigma/i/index.htm
 - https://observablehq.com/@tmcw/enigma-machine
 - https://github.com/gchq/CyberChef/blob/master/src/core/lib/Enigma.mjs
+- https://piotte13.github.io/enigma-cipher/ (maybe only works in Firefox?)
 
 ### Questions
 
