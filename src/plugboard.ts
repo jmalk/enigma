@@ -1,9 +1,9 @@
 import { Letter } from "./Letter";
 
-type Connection = [Letter, Letter];
-export type Connections = Connection[];
+type Connection = readonly [Letter, Letter];
+export type Connections = readonly Connection[];
 
-function throwIfAnyConnectedToSelf(connections: Connection[]) {
+function throwIfAnyConnectedToSelf(connections: Connections) {
   connections.forEach((connection, index) => {
     if (connection[0] === connection[1]) {
       throw new Error(
@@ -15,7 +15,7 @@ function throwIfAnyConnectedToSelf(connections: Connection[]) {
 
 // Probably opportunity to extract smaller helper functions out of this one,
 // or use a library like lodash.
-function throwIfOneLetterConnectedToMultiple(connections: Connection[]) {
+function throwIfOneLetterConnectedToMultiple(connections: Connections) {
   // Flatten connections into a single array of letters
   const all = connections.reduce((all, connection) => {
     return [...all, ...connection];

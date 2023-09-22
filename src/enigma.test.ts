@@ -21,6 +21,7 @@ test("Transforms a letter via the plugboard, rotor I, reflector, back through ro
     ["A", "B"],
     ["K", "T"],
   ];
+
   const e = enigma(ukwBWiring, plugboardConfig, rotorIWiring);
 
   // plugboard
