@@ -1,24 +1,38 @@
 import { enigma } from "./enigma";
-import { ukwBWiring } from "./config";
+import { rotorIWiring, ukwBWiring } from "./config";
 import { Connections } from "./plugboard";
 
-test("Transforms a letter via the plugboard and reflector (but not back through the plugboard yet)", () => {
-  const plugboardConfig: Connections = [["A", "B"]];
-  const e = enigma(ukwBWiring, plugboardConfig);
+test("Transforms a letter via the (empty) plugboard, rotor I, reflector, back through rotor I", () => {
+  const plugboardConfig: Connections = [];
+  const e = enigma(ukwBWiring, plugboardConfig, rotorIWiring);
 
-  expect(e("A")).toBe("R");
-  expect(e("B")).toBe("Y");
-  expect(e("C")).toBe("U");
+  // rotor I
+  // A => E
+  // reflector
+  // E => Q
+  // reverse rotor I
+  // Q => H
+
+  expect(e("A")).toBe("H");
 });
 
-test("Transforms a letter via the plugboard and reflector then back through the plugboard", () => {
+test("Transforms a letter via the plugboard, rotor I, reflector, back through rotor I, back through plugboard", () => {
   const plugboardConfig: Connections = [
     ["A", "B"],
-    ["R", "Y"],
+    ["K", "T"],
   ];
-  const e = enigma(ukwBWiring, plugboardConfig);
+  const e = enigma(ukwBWiring, plugboardConfig, rotorIWiring);
 
-  expect(e("A")).toBe("Y");
-  expect(e("B")).toBe("R");
-  expect(e("C")).toBe("U");
+  // plugboard
+  // A => B
+  // rotor I
+  // B => K
+  // reflector
+  // K => N
+  // reverse rotor I
+  // N => K
+  // plugboard
+  // K => T
+
+  expect(e("A")).toBe("T");
 });
