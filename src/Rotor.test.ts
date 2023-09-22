@@ -83,33 +83,58 @@ describe("Reverse transformation:", () => {
 });
 
 describe("Position and reverse transformation:", () => {
-  test(`Rotor I in position "B" reverse-transforms K to E`, () => {
+  test(`Rotor I in position "B" reverse-transforms K to D`, () => {
+    // Signal comes in at what would be "K" position.
+    // But K is now L because you've rotated one click
+    // L transforms to E via the wiring
+    // But E is in D's position
+    // So D should come out at the end.
     const rotorI = new Rotor(rotorIWiring, "B");
 
-    expect(rotorI.reverseTransform("K")).toBe("E");
+    expect(rotorI.reverseTransform("K")).toBe("D");
   });
 
-  test(`Rotor I in position "B" reverse-transforms M to K`, () => {
+  test(`Rotor I in position "B" reverse-transforms M to J`, () => {
+    // Signal comes in at what would be "M" position.
+    // But M is now N because you've rotated one click
+    // N transforms to K via the wiring
+    // But K is in J's position
+    // So J should come out at the end.
     const rotorI = new Rotor(rotorIWiring, "B");
 
-    expect(rotorI.reverseTransform("M")).toBe("K");
+    expect(rotorI.reverseTransform("M")).toBe("J");
   });
 
-  test(`Rotor I in position "B" reverse-transforms F to F`, () => {
+  test(`Rotor I in position "B" reverse-transforms F to E`, () => {
+    // Signal comes in at what would be "F" position.
+    // But F is now G because you've rotated one click
+    // G transforms to F via the wiring
+    // But F is in E's position
+    // So E should come out at the end.
     const rotorI = new Rotor(rotorIWiring, "B");
 
-    expect(rotorI.reverseTransform("F")).toBe("F");
+    expect(rotorI.reverseTransform("F")).toBe("E");
   });
 
-  test(`Rotor I in position "B" reverse-transforms E to Z`, () => {
+  test(`Rotor I in position "B" reverse-transforms E to C`, () => {
+    // Signal comes in at what would be "E" position.
+    // But E is now F because you've rotated one click
+    // F transforms to D via the wiring
+    // But D is in C's position
+    // So C should come out at the end.
     const rotorI = new Rotor(rotorIWiring, "B");
 
-    expect(rotorI.reverseTransform("E")).toBe("D");
+    expect(rotorI.reverseTransform("E")).toBe("C");
   });
 
-  test(`Rotor I in position "Z" reverse-transforms J to V`, () => {
+  test(`Rotor I in position "Z" reverse-transforms J to W`, () => {
+    // Signal comes in at what would be "J" position.
+    // But J is now I because you've rotated twenty-six clicks
+    // I transforms to V via the wiring
+    // But V is in W's position
+    // So W should come out at the end.
     const rotorI = new Rotor(rotorIWiring, "Z");
 
-    expect(rotorI.reverseTransform("J")).toBe("V");
+    expect(rotorI.reverseTransform("J")).toBe("W");
   });
 });
